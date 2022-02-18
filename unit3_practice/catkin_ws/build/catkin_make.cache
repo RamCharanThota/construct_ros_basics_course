@@ -1,0 +1,2 @@
+my_examples_pkg
+-DCATKIN_DEVEL_PREFIX=/home/rcbot/The_construct_coursed/ros_basics/unit3_practice/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/rcbot/The_construct_coursed/ros_basics/unit3_practice/catkin_ws/install -G Unix Makefiles
