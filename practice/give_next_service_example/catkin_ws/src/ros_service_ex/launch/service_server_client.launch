@@ -1,0 +1,5 @@
+<launch>
+<node name="product_service_server" pkg="ros_service_ex" type="product_three_ints_server" output="screen" />
+<node name="product_service_client" pkg="ros_service_ex" type="product_three_ints_client" args="2 2 2" output="screen" />
+
+</launch>
