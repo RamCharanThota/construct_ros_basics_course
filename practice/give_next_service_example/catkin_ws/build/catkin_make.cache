@@ -1,2 +1,0 @@
-ros_service_ex
--DCATKIN_DEVEL_PREFIX=/home/rcbot/The_construct_coursed/ros_basics/practice/give_next_service_example/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/rcbot/The_construct_coursed/ros_basics/practice/give_next_service_example/catkin_ws/install -G Unix Makefiles

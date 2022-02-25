@@ -207,3 +207,8 @@ include_directories(
 add_executable(product_three_ints_server src/product_service_server.cpp)
 target_link_libraries(product_three_ints_server ${catkin_LIBRARIES})
 add_dependencies(product_three_ints_server ros_service_ex_gencpp)
+
+
+add_executable(product_three_ints_client src/product_service_client.cpp)
+target_link_libraries(product_three_ints_client ${catkin_LIBRARIES})
+add_dependencies(product_three_ints_client ros_service_ex_gencpp)
