@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/rcbot/construct_courses/ros_basics/practice/action_example/catkin_ws/devel/setup.sh
