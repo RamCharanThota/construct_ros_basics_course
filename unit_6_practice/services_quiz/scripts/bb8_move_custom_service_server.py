@@ -46,14 +46,14 @@ def my_callback(request):
         while(not robot_complete_sqaure):
 
             if(go_straight):
-                cmd.linear.x = 0.1
+                cmd.linear.x = 0.4
                 cmd.linear.y = 0.0
                 cmd.angular.z = 0.0
 
             else:
                 cmd.linear.x = 0.0
                 cmd.linear.y = 0.0
-                cmd.angular.z = 0.1
+                cmd.angular.z = 0.4
 
             pub.publish(cmd)
 
@@ -62,12 +62,12 @@ def my_callback(request):
                                   (y_val - y_val_prev)**2)**0.5
             yaw_changes = abs(yaw_val-yaw_val_prev)
 
-            if(distance_travelled >= side):
+            if(distance_travelled >= side and True):
                 x_val_prev = x_val
                 y_val_prev = y_val
                 go_straight = False
 
-            if(yaw_changes <= - math.pi):
+            if(yaw_changes >= math.pi/2 and not go_straight):
                 yaw_val_prev = yaw_val
                 go_straight = True
 
@@ -76,6 +76,11 @@ def my_callback(request):
                         (y_val - initial_y_val)**2)**0.5
             oren_diff = abs(initial_yaw_val-yaw_val)
             if(pos_diff < 0 and oren_diff < 0):
+                cmd.linear.x = 0.0
+                cmd.linear.y = 0.0
+                cmd.angular.z = 0.0
+                pub.publish(cmd)
+
                 robot_complete_sqaure = True
 
         repetition_counter = repetition_counter+1
