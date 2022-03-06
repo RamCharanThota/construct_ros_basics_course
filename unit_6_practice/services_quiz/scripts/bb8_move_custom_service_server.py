@@ -23,7 +23,7 @@ def odom_callback(data):
     orientation_list = [orientation_q.x, orientation_q.y,
                         orientation_q.z, orientation_q.w]
     (roll_val, pitch_val, yaw_val) = euler_from_quaternion(orientation_list)
-    print("x :", x_val, " y:", y_val, " orie z:", yaw_val)
+    #print("x :", x_val, " y:", y_val, " orie z:", yaw_val)
 
 
 def my_callback(request):
@@ -32,12 +32,12 @@ def my_callback(request):
     my_response = BB8CustomServiceMessageResponse()
     repetition_counter = 0
     go_straight = True
-    robot_complete_sqaure = False
+    #robot_complete_sqaure = False
 
     while(repetition_counter < request.repetitions):
-        initial_x_val = x_val
-        initial_y_val = y_val
-        initial_yaw_val = yaw_val
+        #initial_x_val = x_val
+        #initial_y_val = y_val
+        #initial_yaw_val = yaw_val
 
         x_val_prev = x_val
         y_val_prev = y_val
@@ -96,7 +96,7 @@ def my_callback(request):
     return my_response
 
 
-rospy.init_node('service_client')
+rospy.init_node('bb8_service_server')
 # create the Service called my_service with the defined callback
 my_service = rospy.Service(
     '/move_bb8_in_square_custom', BB8CustomServiceMessage, my_callback)
@@ -104,4 +104,3 @@ pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
 rospy.Subscriber("/odom", Odometry, odom_callback)
 cmd = Twist()
 rospy.spin()  # maintain the service open.
-
