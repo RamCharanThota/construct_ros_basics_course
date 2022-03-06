@@ -43,13 +43,13 @@ def my_callback(request):
         y_val_prev = y_val
         yaw_val_prev = yaw_val
 
-        while(not robot_complete_sqaure):
-
+        send_command_count = 0
+        # while(not robot_complete_sqaure):
+        while(send_command_count < 4):
             if(go_straight):
                 cmd.linear.x = 0.4
                 cmd.linear.y = 0.0
                 cmd.angular.z = 0.0
-
             else:
                 cmd.linear.x = 0.0
                 cmd.linear.y = 0.0
@@ -70,20 +70,28 @@ def my_callback(request):
             if(yaw_changes >= math.pi/2 and not go_straight):
                 yaw_val_prev = yaw_val
                 go_straight = True
-
+                send_command_count = send_command_count+1
+            """
             # condition to check robot reach its intial position
             pos_diff = ((x_val - initial_x_val)**2 +
                         (y_val - initial_y_val)**2)**0.5
             oren_diff = abs(initial_yaw_val-yaw_val)
+
+            
             if(pos_diff < 0 and oren_diff < 0):
                 cmd.linear.x = 0.0
                 cmd.linear.y = 0.0
                 cmd.angular.z = 0.0
                 pub.publish(cmd)
-
                 robot_complete_sqaure = True
 
+            """
+
         repetition_counter = repetition_counter+1
+    cmd.linear.x = 0.0
+    cmd.linear.y = 0.0
+    cmd.angular.z = 0.0
+    pub.publish(cmd)
     my_response = True
     return my_response
 
