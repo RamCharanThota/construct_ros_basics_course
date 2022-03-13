@@ -67,6 +67,25 @@ rospy.loginfo("state_result: "+str(state_result))
 # status = client.get_state()
 # check the client API link below for more info
 
+# wait until the result is obtained
+# you can do other stuff here instead of waiting
+# and check for status from time to time
+# status = client.get_state()
+# check the client API link below for more info
+
+
+# wait until the result is obtained
+# you can do other stuff here instead of waiting
+# and check for status from time to time
+# status = client.get_state()
+# check the client API link below for more info
+
+# wait until the result is obtained
+# you can do other stuff here instead of waiting
+# and check for status from time to time
+# status = client.get_state()
+# check the client API link below for more info
+
 
 cmd = Twist()
 while state_result < DONE:
